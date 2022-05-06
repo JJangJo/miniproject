@@ -2,36 +2,54 @@
 #include "prodManager.h"
 
 
+//ì œí’ˆì„ ì¶”ê°€í•œë‹¤
+int createproduct(product *p){
+
+	printf("\nì œí’ˆëª…: ");
+    getchar();
+	fgets(p->name,sizeof(p->name),stdin);
+	printf("ì œí’ˆ ì •ë³´: ");
+	getchar();
+	fgets(p->info,sizeof(p->info),stdin);
+	printf("ì œí’ˆ ê°€ê²©: ");
+	scanf("%d",p->price);
+	printf("ì œí’ˆ ìˆ˜ëŸ‰: ");
+	scanf("%d",&p->remain);
+    p->totalSales = 0;
+	printf("\nì¶”ê°€ ì™„ë£Œ!\n\n");
+}
+
+
 
 
 int updateproduct(product *p){
     int decision=0;
-    printf("ÀÌ¸§ ¼öÁ¤: ");
-    printf("¼öÁ¤ÇÏ½Ã·Á¸é 1¹øÀ» ´­·¯ÁÖ¼¼¿ä");
+    printf("ì´ë¦„ ìˆ˜ì •: ");
+    printf("ìˆ˜ì •í•˜ì‹œë ¤ë©´ 1ë²ˆì„ ëˆŒëŸ¬ì£¼ì„¸ìš”");
     scanf("%d",&decision);
     if(decision==1){
-        printf("ÀÌ¸§ ÀÔ·Â: ");
+        printf("ì´ë¦„ ìž…ë ¥: ");
         gets(p->name);
     }
-    printf("Á¤º¸ ¼öÁ¤: ");
-    printf("¼öÁ¤ÇÏ½Ã·Á¸é 1¹øÀ» ´­·¯ÁÖ¼¼¿ä");
+    printf("ì •ë³´ ìˆ˜ì •: ");
+    printf("ìˆ˜ì •í•˜ì‹œë ¤ë©´ 1ë²ˆì„ ëˆŒëŸ¬ì£¼ì„¸ìš”");
     scanf("%d",&decision);
     if(decision==1){
-        printf("Á¤º¸ ÀÔ·Â: ");
+        printf("ì •ë³´ ìž…ë ¥: ");
         gets(p->info);
     }
-    printf("°¡°Ý ¼öÁ¤: ");
-    printf("¼öÁ¤ÇÏ½Ã·Á¸é 1¹øÀ» ´­·¯ÁÖ¼¼¿ä");
+    printf("ê°€ê²© ìˆ˜ì •: ");
+    printf("ìˆ˜ì •í•˜ì‹œë ¤ë©´ 1ë²ˆì„ ëˆŒëŸ¬ì£¼ì„¸ìš”");
     scanf("%d",&decision);
     if(decision==1){
-        printf("°¡°Ý ÀÔ·Â: ");
+        printf("ê°€ê²© ìž…ë ¥: ");
         scanf("%d",p->price);
     }
-    printf("¼ö·® ¼öÁ¤: ");
-    printf("¼öÁ¤ÇÏ½Ã·Á¸é 1¹øÀ» ´­·¯ÁÖ¼¼¿ä");
+    printf("ìˆ˜ëŸ‰ ìˆ˜ì •: ");
+    printf("ìˆ˜ì •í•˜ì‹œë ¤ë©´ 1ë²ˆì„ ëˆŒëŸ¬ì£¼ì„¸ìš”");
     scanf("%d",&decision);
     if(decision==1){
-        printf("¼ö·® ÀÔ·Â: ");
+        printf("ìˆ˜ëŸ‰ ìž…ë ¥: ");
         scanf("%d",p->remain);
     }
 
@@ -40,7 +58,7 @@ int updateproduct(product *p){
 int printRemain(product *p,int count){
     for(int i=0;i<count;i++){
         if(p[i].price==-1) continue;
-        printf("%s: %d°³ ³²¾Ò½À´Ï´Ù.\n",p[i].name,p[i].remain);
+        printf("%s: %dê°œ ë‚¨ì•˜ìŠµë‹ˆë‹¤.\n",p[i].name,p[i].remain);
     }
 }
 
