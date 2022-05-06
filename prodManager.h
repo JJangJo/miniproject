@@ -20,5 +20,5 @@ int loadData(product *p);//파일 형태의 제품 정보를 입력한다.
 void saveData(product *p);//파일 형태로 제품 정보를 추가한다.
 int selectMenu();//추가, 출력, 업데이트 등 어떠한 기능을 사용할지 출력한다.
 int selectDataNo(product *p, int count);//특정 번호의 제품 정보를 출력한다.
-int printRemain(product *p);//남은 개수를 알려준다. 
+int printRemain(product *p,int count);//남은 개수를 알려준다. 
 int printTotalSell(product *p);//지금까지 팔린 개수를 알려준다. 
