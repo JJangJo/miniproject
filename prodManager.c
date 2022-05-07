@@ -67,6 +67,7 @@ int printRemain(product *p,int count){//남은 수량 출력
 
 int deleteProduct(product *p){//제품의 정보를 삭제한다.
         p->price=-1;
+        p->name[0]='\0';
         return 1;
 }
 
