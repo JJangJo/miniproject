@@ -59,7 +59,7 @@ int updateproduct(product *p){
 
 int printRemain(product *p,int count){//남은 수량 출력
     for(int i=0;i<count;i++){
-        if(p[i].price==-1) continue; // 만약 delete된 제품이라면 뛰어넘고 출력
+        if(p[i].remain==0) continue; // 만약 delete된 제품이라면 뛰어넘고 출력
         printf("%s: %d개 남았습니다.\n",p[i].name,p[i].remain);
     }
     return 1;
@@ -68,6 +68,7 @@ int printRemain(product *p,int count){//남은 수량 출력
 int deleteProduct(product *p){//제품의 정보를 삭제한다.
         p->price=-1;
         p->name[0]='\0';
+        p->remain=0;
         return 1;
 }
 
