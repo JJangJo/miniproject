@@ -95,7 +95,20 @@ void listproduct(product p[],int count){
     
 }
 
-
+void addcart(product*p, int *cart[], int count){
+    listproduct(p,count);
+    int num;
+    do{
+        printf("추가할 제품의 번호를 입력하시오: ");
+        scanf("%d",&num);
+    }while(num>count||num<0);
+    cart[0] = num;
+    do{
+        printf("몇개를 담으시겠습니까?: ");
+        scanf("%d",&num);
+    } while((num<p[num].remain));
+    
+}
 int main(){
     return 0;
 }
