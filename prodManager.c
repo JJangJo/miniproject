@@ -9,33 +9,34 @@
 int updateproduct(product *p){
     int decision=0;
     printf("이름 수정: ");
-    printf("수정하시려면 1번을 눌러주세요");
-    getchar();
+    printf("수정하시려면 1번을 눌러주세요\n");
     scanf("%d",&decision);
     if(decision==1){
         printf("이름 입력: ");
+        getchar();
         gets(p->name);
     }
     printf("정보 수정: ");
-    printf("수정하시려면 1번을 눌러주세요");
+    printf("수정하시려면 1번을 눌러주세요\n");
     scanf("%d",&decision);
     if(decision==1){
         printf("정보 입력: ");
+        getchar();
         gets(p->info);
     }
     printf("가격 수정: ");
-    printf("수정하시려면 1번을 눌러주세요");
+    printf("수정하시려면 1번을 눌러주세요\n");
     scanf("%d",&decision);
     if(decision==1){
         printf("가격 입력: ");
-        scanf("%d",p->price);
+        scanf("%d",&p->price);
     }
     printf("수량 수정: ");
-    printf("수정하시려면 1번을 눌러주세요");
+    printf("수정하시려면 1번을 눌러주세요\n");
     scanf("%d",&decision);
     if(decision==1){
         printf("수량 입력: ");
-        scanf("%d",p->remain);
+        scanf("%d",&p->remain);
     }
     return 1;
 
@@ -176,9 +177,9 @@ int main(){
                 printf("데이터 없음");
                 continue;;
             }
-            printf("몇 번 데이터");
+            printf("몇 번 데이터(1번 부터): ");
             scanf("%d",&choice);
-            result=updateproduct(&p[choice]);
+            result=updateproduct(&p[choice-1]);
             if(result==1) printf("저장됨!");
         }
         else if(temp==4){//삭제
@@ -186,9 +187,9 @@ int main(){
                 printf("데이터 없음");
                 continue;;
             }
-            printf("몇 번 데이터");
+            printf("몇 번 데이터(1번 부터): ");
             scanf("%d",&choice);
-            result=deleteProduct(&p[choice]);
+            result=deleteProduct(&p[choice-1]);
             if(result==1) printf("삭제됨!");
         }
         else if(temp==7){//남은 수량
