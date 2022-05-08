@@ -69,7 +69,7 @@ int createproduct(product *p){
 */
 int readproduct(product p){
 
-    if (p.name[0] == '\0' || p.price < 0) {
+    if (p.name[0] == '\0' || p.price < 0 || p.remain < 1) {
     printf("삭제된 체품입니다!");
     return 0;
     } //check for empty
@@ -85,7 +85,7 @@ int readproduct(product p){
 void listproduct(product p[],int count){
     for (int i = 0; i < count; i++)
     {
-        if (p[i].name[0] == '\0' || p[i].price < 0) continue;//check for empty
+        if (p[i].name[0] == '\0' || p[i].price < 0 || p[i].remain<1) continue;//check for empty
         printf("\n***********************************\n");
         printf("제품명: %s\n 가격:%d\t 재고:%d",p[i].name,p[i].price,p[i].remain);
     }
