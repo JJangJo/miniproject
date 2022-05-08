@@ -57,7 +57,34 @@ int createproduct(product *p){
     return 0;
 }
 
+//한가지의 프로덕트 정보를 출력한다 (자세히).
+/* 예시:
+***********************************
+제품명: 미니 크로와상
+200원
+10개 남음
 
+제품 정보: 크로와상보다 작은 크로와상
+***********************************
+*/
+int readproduct(product p){
+
+    if (p.name[0] == '\0' || p.price < 0) {
+    printf("삭제된 체품입니다!");
+    return 0;
+    } //check for empty
+    printf("\n***********************************\n");
+    printf("제품명: %s\n%d원\n",p.name,p.price);
+    printf("%d개 남음 \n",p.remain);
+    printf("\n제품 정보: %s",p.info);
+	printf("\n***********************************\n\n");
+	return 0;
+}
+
+//모든 프로덕트의 정보를 출력한다(간략하게).
+void listproduct(product p[],int count){
+
+}
 
 
 int main(){
