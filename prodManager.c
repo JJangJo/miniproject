@@ -45,11 +45,9 @@ int printRemain(product *p,int count){
 int createproduct(product *p){
 
 	printf("\n力前疙: ");
-    getchar();
-	fgets(p->name,sizeof(p->name),stdin);
+    gets(p->name);
 	printf("力前 沥焊: ");
-	getchar();
-	fgets(p->info,sizeof(p->info),stdin);
+    gets(p->info);
 	printf("力前 啊拜: ");
 	scanf("%d",p->price);
 	printf("力前 荐樊: ");
