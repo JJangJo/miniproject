@@ -92,7 +92,6 @@ void listproduct(product p[],int count){
     }
     printf("\n***********************************\n\n");
     
-    
 }
 
 void addcart(product*p, int *cart[], int count){
