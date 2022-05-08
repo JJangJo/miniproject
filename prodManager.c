@@ -83,13 +83,13 @@ int readproduct(product p){
 
 //모든 프로덕트의 정보를 출력한다(간략하게).
 void listproduct(product p[],int count){
+    printf("\n***********************************\n\n");
     for (int i = 0; i < count; i++)
     {
         if (p[i].name[0] == '\0' || p[i].price < 0 || p[i].remain<1) continue;//check for empty
-        printf("\n***********************************\n");
-        printf("제품명: %s\n 가격:%d\t 재고:%d",p[i].name,p[i].price,p[i].remain);
+       
+        printf("제품명: %s\n 가격:%d\t 재고:%d\n",p[i].name,p[i].price,p[i].remain);
     }
-
     printf("\n***********************************\n\n");
     
     
