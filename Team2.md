@@ -35,3 +35,34 @@ Created by 장세창
 
 ![Update Function](https://user-images.githubusercontent.com/103114649/167306019-e0271ead-4f44-4ae2-bc40-6120852ccfda.JPG)
 Created by 장세창
+
+### int createproduct(product *p);//제품을 추가한다.
+제품을 추가한다 (이름, 정보, 가격, 수량)
+> 2022.5.6
+> 함수 추가
+
+![Create Function](https://github.com/JJangJo/miniproject/blob/main/screenshot/Create%20Function.JPG?raw=true)
+Created by 조성준
+
+### void listproduct(product p[],int count);//모든 프로덕트의 정보를 출력한다.
+입력되어 있는 정보를 읽어오는 기능이다.
+> 2022.5.6
+> 함수 추가. 
+
+![Read Function](https://raw.githubusercontent.com/JJangJo/miniproject/main/screenshot/Read%20Function.JPG)
+Created by 조성준
+
+
+### int readproduct(product p);//한가지의 프로덕트 정보를 출력한다.
+어느 특정 정보를 자세히 (상품 정보 포함) 출력한다.
+> 2022.5.6
+> 함수 추가. 추후에 검색 기능이 구현되면 그것과 연관시켜 정보 출력 할 예정.
+
+출력 예시(예상): 
+>제품명: 미니 크로와상
+>200원
+>10개 남음
+>
+>제품 정보: 크로와상보다 작은 크로와상
+
+Created by 조성준
