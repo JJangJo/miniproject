@@ -143,10 +143,23 @@ void addcart(product*p, int *cart[], int count){
   scanf("%d",&num);
   } while((num<p[num].remain));
 
- }
+}
+
+void saveData(product *p,char* data,int count){
+    FILE *fp=NULL;
+    fp=fopen(data,"wt");
+    FILE *fp=NULL;
+    fp=fopen("product.txt","wt");
+    for(int i=0;i<count;i++){
+        if(p[i].price==-1) continue;
+        fprintf(fp,"%s;%s;%d;%d\n",p[i].name,p[i].info,p[i].remain,p[i].totalSales);
+    }
+    fclose(fp);
+    printf("저장됨");
+}
 
 
-int main(){
+int main(int argc,char *argv[]){
     product p[10];
     int temp; //selectmenu를 받음
     int result;
