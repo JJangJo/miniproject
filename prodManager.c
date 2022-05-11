@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "prodManager.h"
-
-
+#include <stdlib.h>
+#include <string.h>
 //제품을 추가한다
 
 
@@ -148,8 +148,6 @@ void addcart(product*p, int *cart[], int count){
 void saveData(product *p,char* data,int count){
     FILE *fp=NULL;
     fp=fopen(data,"wt");
-    FILE *fp=NULL;
-    fp=fopen("product.txt","wt");
     for(int i=0;i<count;i++){
         if(p[i].price==-1) continue;
         fprintf(fp,"%s;%s;%d;%d\n",p[i].name,p[i].info,p[i].remain,p[i].totalSales);
@@ -158,9 +156,35 @@ void saveData(product *p,char* data,int count){
     printf("저장됨");
 }
 
+int loadData(product *p,char *data){
+    FILE *fp=NULL;
+    char *dummy=NULL;
+    char sentence[100];
+    int i=0;
+    fp=fopen("data","rt");
+    if(fp==NULL) return -1;
+    while(fgets(sentence,100,fp)){
+        dummy=strtok(sentence,";");
+        strcpy(p[i].name,dummy);
+        dummy=strtok(NULL,";");
+        strcpy(p[i].info,dummy);
+        dummy=strtok(NULL,";");
+        p[i].price=atoi(dummy);
+        dummy=strtok(NULL,";");
+        p[i].remain=atoi(dummy);
+        dummy=strtok(NULL,";");
+        p[i].totalSales=atoi(dummy);
+        i++;
+    }
+    fclose(fp);
+    return i;
+}
+
 
 int main(int argc,char *argv[]){
     product p[10];
+    char* inputFileName = argv[0];
+    char* outputFileName= argv[1];
     int temp; //selectmenu를 받음
     int result;
     int count=0;
