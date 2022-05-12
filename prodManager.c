@@ -188,7 +188,24 @@ int selectDataNo(product *p,int count){
     return no;
 }
 
-
+void searchProductName(product *p,int count){
+    char search[100];
+    int scount=0;
+    getchar();
+    printf("제품 이름:");
+    scanf("%[^\n]s",search);
+    printf("\n***************\n");
+    for(int i=0;i<count;i++){
+        if(p[i].remain==0||p[i].price==-1||p[i].name[0]=='\0') continue;
+        if(strstr(p[i].name,search)){
+        printf("\n");
+        readProduct(p[i]);
+        scount++;
+        }
+    }
+    if(scount==0)
+    printf("데이터 없음!\n");
+}
 
 
 
