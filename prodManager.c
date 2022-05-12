@@ -180,6 +180,17 @@ int loadData(product *p,char *data){
     return i;
 }
 
+int selectDataNo(product *p,int count){
+    int no;
+    listProduct(p,count);
+    printf("번호는? 최소 (0) ? ");
+    scanf("%d",&no);
+    return no;
+}
+
+
+
+
 
 int main(int argc,char *argv[]){
     product p[10];
