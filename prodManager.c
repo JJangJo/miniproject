@@ -126,7 +126,7 @@ void listproduct(product p[],int count){
     {
         if (p[i].name[0] == '\0' || p[i].price < 0 || p[i].remain<1) continue;//check for empty
        
-        printf("제품명: %s\n 가격:%d\t 재고:%d\n",p[i].name,p[i].price,p[i].remain);
+        printf("%d. 제품명: %s\n 가격:%d\t 재고:%d\n",i+1,p[i].name,p[i].price,p[i].remain);
     }
     printf("\n***********************************\n\n");
     
@@ -217,10 +217,18 @@ void searchProductName(product *p,int count){
 }
 
 
-int printTotalSell(product *p){
+int printTotalSell(product *p,int count){
+    
+}
+void printFinalPrice(product*p,int count){
+    int total = 0;
+    for (int i; i<count;i++){
+        if(p[i].price == -1) continue; //deleted product
+        total += p[i].price * p[i].totalSales;
+    }
+    printf("총 매출: %d\n", total);
 
 }
-void printFinalPrice(product*p,int cart[]);
 
 
 int main(){
@@ -287,6 +295,13 @@ int main(){
                 continue;
             }
             result=printRemain(p,count);
+        }
+        else if(temp==8){//매출
+            if(count==0){
+                printf("데이터 없음");
+                continue;
+            }
+            printTotalSell(p,count);
         }
         else if(temp==9){
             if(count==0){

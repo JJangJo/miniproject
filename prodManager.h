@@ -22,5 +22,5 @@ void saveData(product *p,char* data, int count);//파일 형태로 제품 정보를 추가한
 int selectMenu();//추가, 출력, 업데이트 등 어떠한 기능을 사용할지 출력한다.
 int selectDataNo(product *p, int count);//특정 번호의 제품 정보를 출력한다.
 int printRemain(product *p,int count);//남은 개수를 알려준다. 
-int printTotalSell(product *p);//지금까지 팔린 개수를 알려준다. 
-void printFinalPrice(product*p,int cart[]);
+int printTotalSell(product *p,int count);//지금까지 팔린 개수를 알려준다. 
+void printFinalPrice(product*p,int count); //총 매출 출력
