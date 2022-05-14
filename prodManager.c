@@ -183,7 +183,7 @@ int loadData(product *p){
 
 int selectDataNo(product *p,int count){
     int no;
-    listProduct(p,count);
+    listproduct(p,count);
     printf("번호는? 최소 (0) ? ");
     scanf("%d",&no);
     return no;
@@ -200,7 +200,7 @@ void searchProductName(product *p,int count){
         if(p[i].remain==0||p[i].price==-1||p[i].name[0]=='\0') continue;
         if(strstr(p[i].name,search)){
         printf("\n");
-        readProduct(p[i]);
+        readproduct(p[i]);
         scount++;
         }
     }
