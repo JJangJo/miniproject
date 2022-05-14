@@ -148,6 +148,7 @@ void addcart(product*p, int *cart[], int count){
 
 int main(){
     product p[10];
+    product cart[10];
     int temp; //selectmenu를 받음
     int result;
     int count=0;

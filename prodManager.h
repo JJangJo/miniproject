@@ -10,7 +10,7 @@ typedef struct
 
 
 int createproduct(product *p);//제품을 추가한다.
-int addpcart(product*p, int cart[], int count); //장바구니에 제품을 추가한다
+void addcart(product*p, int count); //장바구니에 제품을 추가한다
 int readproduct(product p);//한가지의 프로덕트 정보를 출력한다.
 void listproduct(product p[],int count);//모든 프로덕트의 정보를 출력한다.
 int updateproduct(product *p);//제품 정보를 업데이트한다.

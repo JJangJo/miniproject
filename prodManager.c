@@ -71,6 +71,7 @@ int selectMenu(){//메뉴 선택 기능
         printf("7. 남은 수량 출력\n");
         printf("8. 최종 가격 출력\n");
         printf("9. 제품 정보 파일 저장\n");
+        printf("10. 장바구니 담기\n");
         printf("0. 종료\n");
         printf("========================\n\n");
         scanf("%d",&menu);
@@ -131,19 +132,25 @@ void listproduct(product p[],int count){
     
 }
 
-void addcart(product*p, int *cart[], int count){
-  listproduct(p,count);
-  int num;
-  do{
-  printf("추가할 제품의 번호를 입력하시오: ");
-  scanf("%d",&num);
-  }while(num>count||num<0);
-  cart[0] = num;
-  do{
-  printf("몇개를 담으시겠습니까?: ");
-  scanf("%d",&num);
-  } while((num<p[num].remain));
-
+void addcart(product*p, int count){
+    listproduct(p,count);
+    int num;
+    do{
+        printf("추가할 제품의 번호를 입력하시오: ");
+        scanf("%d",&num);
+    }while(num>count||num<0);
+    if(p[num].remain==0) {
+        printf("재고가 없습니다!\n");
+        return;
+    }
+    int buy;
+    do{
+        printf("몇개를 담으시겠습니까? (%d객 남음): ",p[num].remain);
+        scanf("%d",&buy);
+        if(buy<0) buy = 0;
+    } while((buy>p[num].remain));
+    p[num].totalSales += num;
+    p[num].remain -= buy;
 }
 
 void saveData(product *p,char* data,int count){
@@ -210,9 +217,15 @@ void searchProductName(product *p,int count){
 }
 
 
+int printTotalSell(product *p){
+
+}
+void printFinalPrice(product*p,int cart[]);
+
 
 int main(){
     product p[10];
+    product cart[10];
     char outputFileName[100];
     int temp; //selectmenu를 받음
     int result;
@@ -283,6 +296,14 @@ int main(){
             printf("저장할 파일 이름은?: ");
             scanf("%s",outputFileName);
             saveData(p,outputFileName,count);
+        }
+        else if (temp == 10){ //장바구니 담기
+            if(count == 0){
+                printf("데이터 없음");
+                continue;
+            }
+            addcart(p,count);
+            continue;
         }
     }
     return 0;
