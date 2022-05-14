@@ -149,9 +149,10 @@ void addcart(product*p, int *cart[], int count){
 void saveData(product *p,char* data,int count){
     FILE *fp=NULL;
     fp=fopen(data,"wt");
+    if(fp==NULL) return;
     for(int i=0;i<count;i++){
         if(p[i].price==-1) continue;
-        fprintf(fp,"%s;%s;%d;%d\n",p[i].name,p[i].info,p[i].remain,p[i].totalSales);
+        fprintf(fp,"%s;%s;%d;%d;%d\n",p[i].name,p[i].info,p[i].price,p[i].remain,p[i].totalSales);
     }
     fclose(fp);
     printf("저장됨");
@@ -212,7 +213,7 @@ void searchProductName(product *p,int count){
 
 int main(){
     product p[10];
-    char* outputFileName;
+    char outputFileName[100];
     int temp; //selectmenu를 받음
     int result;
     int count=0;
