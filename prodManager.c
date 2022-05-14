@@ -66,10 +66,11 @@ int selectMenu(){//메뉴 선택 기능
         printf("2. 제품 정보 출력\n");
         printf("3. 제품 정보 업데이트\n");
         printf("4. 제품 정보 삭제\n");
-        // printf("5. 제품 검색\n");
-        // printf("6. 제품 정보 파일 저장\n");
+        printf("5. 제품 이름 검색\n");
+        printf("6. 제품 가격 검색\n");
         printf("7. 남은 수량 출력\n");
         printf("8. 최종 가격 출력\n");
+        printf("9. 제품 정보 파일 저장\n");
         printf("0. 종료\n");
         printf("========================\n\n");
         scanf("%d",&menu);
@@ -156,12 +157,12 @@ void saveData(product *p,char* data,int count){
     printf("저장됨");
 }
 
-int loadData(product *p,char *data){
+int loadData(product *p){
     FILE *fp=NULL;
     char *dummy=NULL;
     char sentence[100];
     int i=0;
-    fp=fopen("data","rt");
+    fp=fopen("product.txt","rt");
     if(fp==NULL) return -1;
     while(fgets(sentence,100,fp)){
         dummy=strtok(sentence,";");
@@ -209,14 +210,18 @@ void searchProductName(product *p,int count){
 
 
 
-int main(int argc,char *argv[]){
+int main(){
     product p[10];
-    char* inputFileName = argv[0];
-    char* outputFileName= argv[1];
+    char* outputFileName;
     int temp; //selectmenu를 받음
     int result;
     int count=0;
     int choice;
+    count=loadData(p);
+    if(count==-1){
+        printf("파일 없음!\n");
+        count=0;
+    }
     while(1){
         temp=selectMenu();
         if(temp==0) break;
@@ -242,8 +247,7 @@ int main(int argc,char *argv[]){
                 printf("데이터 없음");
                 continue;;
             }
-            printf("몇 번 데이터(1번 부터): ");
-            scanf("%d",&choice);
+            choice=selectDataNo(p,count);
             result=updateproduct(&p[choice-1]);
             if(result==1) printf("저장됨!");
         }
@@ -252,10 +256,16 @@ int main(int argc,char *argv[]){
                 printf("데이터 없음");
                 continue;;
             }
-            printf("몇 번 데이터(1번 부터): ");
-            scanf("%d",&choice);
+            choice=selectDataNo(p,count);
             result=deleteProduct(&p[choice-1]);
             if(result==1) printf("삭제됨!");
+        }
+        else if(temp==5){
+            searchProductName(p,count);
+            //이름 검색
+        }
+        else if(temp==6){//가격 검색
+
         }
         else if(temp==7){//남은 수량
             if(count==0){
@@ -263,6 +273,15 @@ int main(int argc,char *argv[]){
                 continue;
             }
             result=printRemain(p,count);
+        }
+        else if(temp==9){
+            if(count==0){
+                printf("데이터 없음");
+                continue;
+            }
+            printf("저장할 파일 이름은?: ");
+            scanf("%s",outputFileName);
+            saveData(p,outputFileName,count);
         }
     }
     return 0;
