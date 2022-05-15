@@ -217,22 +217,39 @@ void searchProductName(product *p,int count){
 }
 
 
+void searchProductPrice(product p,int count){
+//제품 가격 검색을 이용해 물품 정보 출력
+    int search=0;
+    getchar();
+    printf("제품 가격: ");
+    scanf("%d",search);
+    for(int i=0;i<count;i++){
+        if(p[i].remain==0||p[i].price==-1||p[i].name[0]=='\0') continue;
+
+        printf("\n");
+        readproduct(p[i]);
+        search++;
+        }
+    }
+    if(search==0) printf("\n***********************************\n데이터 없음!\n");
+}
+
 void printTotalSell(product *p,int count){
     //지금까지 팔린 개수를 알려준다. 
     int sold = 0;
     for (int i = 0; i < count; i++)
     {
-        if(p[i].name[0]=='\0') continue;
+        if(p[i].price==-1||p[i].name[0]=='\0') continue;
         sold += p[i].totalSales;
     }
     
     printf("총 %d개의 재품이 파렬습니다.",sold);
     
 }
-void printFinalPrice(product*p,int count){
+void printFinalPrice(product *p,int count){
     int total = 0;
     for (int i; i<count;i++){
-        if(p[i].price == -1) continue; //deleted product
+        if(p[i].price==-1||p[i].name[0]=='\0') continue; //deleted product
         total += p[i].price * p[i].totalSales;
     }
     printf("총 매출: %d\n", total);
