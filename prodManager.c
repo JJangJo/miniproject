@@ -222,7 +222,7 @@ void printTotalSell(product *p,int count){
     int sold = 0;
     for (int i = 0; i < count; i++)
     {
-        if(p[i]->name[0]=='\0') continue;
+        if(p[i].name[0]=='\0') continue;
         sold += p[i].totalSales;
     }
     
@@ -327,6 +327,14 @@ int main(){
                 continue;
             }
             addcart(p,count);
+            continue;
+        }
+        else if (temp == 11){
+            if(count == 0){
+                printf("데이터 없음");
+                continue;
+            }
+            printTotalSell(p,count);
             continue;
         }
     }
