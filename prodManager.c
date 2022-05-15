@@ -72,6 +72,7 @@ int selectMenu(){//메뉴 선택 기능
         printf("8. 최종 가격 출력\n");
         printf("9. 제품 정보 파일 저장\n");
         printf("10. 장바구니 담기\n");
+        printf("11. 총 판매 갯수 출력\n");
         printf("0. 종료\n");
         printf("========================\n\n");
         scanf("%d",&menu);
@@ -217,21 +218,22 @@ void searchProductName(product *p,int count){
 }
 
 
-void searchProductPrice(product p,int count){
+void searchProductPrice(product *p,int count){
 //제품 가격 검색을 이용해 물품 정보 출력
-    int search=0;
+    int search;
+    int cnt;
     getchar();
     printf("제품 가격: ");
-    scanf("%d",search);
+    scanf("%d",&search);
     for(int i=0;i<count;i++){
         if(p[i].remain==0||p[i].price==-1||p[i].name[0]=='\0') continue;
-
-        printf("\n");
-        readproduct(p[i]);
-        search++;
+        if (search == p[i].price){
+            printf("\n");
+            readproduct(p[i]);
+            cnt++;
         }
     }
-    if(search==0) printf("\n***********************************\n데이터 없음!\n");
+    if(cnt==0) printf("\n***********************************\n데이터 없음!\n");
 }
 
 void printTotalSell(product *p,int count){
@@ -313,7 +315,7 @@ int main(){
             //이름 검색
         }
         else if(temp==6){//가격 검색
-
+            searchProductPrice(p,count);
         }
         else if(temp==7){//남은 수량
             if(count==0){
