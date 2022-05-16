@@ -139,7 +139,7 @@ void addcart(product *p, int count){
     do{
         printf("추가할 제품의 번호를 입력하시오: ");
         scanf("%d",&num);
-    }while(num>count||num<0);
+    }while(num>count||num<=0);
     num--;
     if(p[num].remain==0) {
         printf("재고가 없습니다!\n");
@@ -253,7 +253,7 @@ void printTotalSell(product *p,int count){
     printf("총 %d개의 재품이 팔렸습니다.",sold);
     
 }
-void printFinalPrice(product *p,int count){0
+void printFinalPrice(product *p,int count){
     int total = 0;
     for (int i=0 ;i<count;i++){
         if(p[i].price==-1||p[i].name[0]=='\0') continue; //deleted product
@@ -278,7 +278,6 @@ int main(){
     }
     while(1){
         temp=selectMenu();
-        printf("%d",count);
         if(temp==0) break;
         if(temp==1){//추가
             result=createproduct(&p[count]);
