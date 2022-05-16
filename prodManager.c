@@ -196,8 +196,10 @@ int loadData(product *p){
 int selectDataNo(product *p,int count){
     int no;
     listproduct(p,count);
-    printf("번호는? 최소 (0) ? ");
+    do{
+    printf("번호는? 최소 (1) ? ");
     scanf("%d",&no);
+    }  while(no<=0);
     return no;
 }
 
