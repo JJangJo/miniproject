@@ -2,55 +2,55 @@
 #include "prodManager.h"
 #include <stdlib.h>
 #include <string.h>
-//ì œí’ˆì„ ì¶”ê°€í•œë‹¤
+//Á¦Ç°À» Ãß°¡ÇÑ´Ù
 
 
 
 int updateproduct(product *p){
     int decision=0;
-    printf("ì´ë¦„ ìˆ˜ì •: ");
-    printf("ìˆ˜ì •í•˜ì‹œë ¤ë©´ 1ë²ˆì„ ëˆŒëŸ¬ì£¼ì„¸ìš”\n");
+    printf("ÀÌ¸§ ¼öÁ¤: ");
+    printf("¼öÁ¤ÇÏ½Ã·Á¸é 1¹øÀ» ´­·¯ÁÖ¼¼¿ä\n");
     scanf("%d",&decision);
     if(decision==1){
-        printf("ì´ë¦„ ì…ë ¥: ");
+        printf("ÀÌ¸§ ÀÔ·Â: ");
         getchar();
         gets(p->name);
     }
-    printf("ì •ë³´ ìˆ˜ì •: ");
-    printf("ìˆ˜ì •í•˜ì‹œë ¤ë©´ 1ë²ˆì„ ëˆŒëŸ¬ì£¼ì„¸ìš”\n");
+    printf("Á¤º¸ ¼öÁ¤: ");
+    printf("¼öÁ¤ÇÏ½Ã·Á¸é 1¹øÀ» ´­·¯ÁÖ¼¼¿ä\n");
     scanf("%d",&decision);
     if(decision==1){
-        printf("ì •ë³´ ì…ë ¥: ");
+        printf("Á¤º¸ ÀÔ·Â: ");
         getchar();
         gets(p->info);
     }
-    printf("ê°€ê²© ìˆ˜ì •: ");
-    printf("ìˆ˜ì •í•˜ì‹œë ¤ë©´ 1ë²ˆì„ ëˆŒëŸ¬ì£¼ì„¸ìš”\n");
+    printf("°¡°İ ¼öÁ¤: ");
+    printf("¼öÁ¤ÇÏ½Ã·Á¸é 1¹øÀ» ´­·¯ÁÖ¼¼¿ä\n");
     scanf("%d",&decision);
     if(decision==1){
-        printf("ê°€ê²© ì…ë ¥: ");
+        printf("°¡°İ ÀÔ·Â: ");
         scanf("%d",&p->price);
     }
-    printf("ìˆ˜ëŸ‰ ìˆ˜ì •: ");
-    printf("ìˆ˜ì •í•˜ì‹œë ¤ë©´ 1ë²ˆì„ ëˆŒëŸ¬ì£¼ì„¸ìš”\n");
+    printf("¼ö·® ¼öÁ¤: ");
+    printf("¼öÁ¤ÇÏ½Ã·Á¸é 1¹øÀ» ´­·¯ÁÖ¼¼¿ä\n");
     scanf("%d",&decision);
     if(decision==1){
-        printf("ìˆ˜ëŸ‰ ì…ë ¥: ");
+        printf("¼ö·® ÀÔ·Â: ");
         scanf("%d",&p->remain);
     }
     return 1;
 
 }
 
-int printRemain(product *p,int count){//ë‚¨ì€ ìˆ˜ëŸ‰ ì¶œë ¥
+int printRemain(product *p,int count){//³²Àº ¼ö·® Ãâ·Â
     for(int i=0;i<count;i++){
-        if(p[i].remain==0) continue; // ë§Œì•½ deleteëœ ì œí’ˆì´ë¼ë©´ ë›°ì–´ë„˜ê³  ì¶œë ¥
-        printf("%s: %dê°œ ë‚¨ì•˜ìŠµë‹ˆë‹¤.\n",p[i].name,p[i].remain);
+        if(p[i].remain==0) continue; // ¸¸¾à deleteµÈ Á¦Ç°ÀÌ¶ó¸é ¶Ù¾î³Ñ°í Ãâ·Â
+        printf("%s: %d°³ ³²¾Ò½À´Ï´Ù.\n",p[i].name,p[i].remain);
     }
     return 1;
 }
 
-int deleteProduct(product *p){//ì œí’ˆì˜ ì •ë³´ë¥¼ ì‚­ì œí•œë‹¤.
+int deleteProduct(product *p){//Á¦Ç°ÀÇ Á¤º¸¸¦ »èÁ¦ÇÑ´Ù.
         p->price=-1;
         p->name[0]='\0';
         p->remain=0;
@@ -58,76 +58,76 @@ int deleteProduct(product *p){//ì œí’ˆì˜ ì •ë³´ë¥¼ ì‚­ì œí•œë‹¤.
 }
 
 
-int selectMenu(){//ë©”ë‰´ ì„ íƒ ê¸°ëŠ¥
+int selectMenu(){//¸Ş´º ¼±ÅÃ ±â´É
         int menu;
-        printf("\n\në©”ë‰´ ì„ íƒ\n");
+        printf("\n\n¸Ş´º ¼±ÅÃ\n");
         printf("================\n");
-        printf("1. ì œí’ˆ ì¶”ê°€\n");
-        printf("2. ì œí’ˆ ì •ë³´ ì¶œë ¥\n");
-        printf("3. ì œí’ˆ ì •ë³´ ì—…ë°ì´íŠ¸\n");
-        printf("4. ì œí’ˆ ì •ë³´ ì‚­ì œ\n");
-        printf("5. ì œí’ˆ ì´ë¦„ ê²€ìƒ‰\n");
-        printf("6. ì œí’ˆ ê°€ê²© ê²€ìƒ‰\n");
-        printf("7. ë‚¨ì€ ìˆ˜ëŸ‰ ì¶œë ¥\n");
-        printf("8. ìµœì¢… ê¸ˆì•¡ ì¶œë ¥\n");
-        printf("9. ì œí’ˆ ì •ë³´ íŒŒì¼ ì €ì¥\n");
-        printf("10. ì¥ë°”êµ¬ë‹ˆ ë‹´ê¸°\n");
-        printf("11. ì´ íŒë§¤ ê°œìˆ˜\n");
-        printf("0. ì¢…ë£Œ\n");
+        printf("1. Á¦Ç° Ãß°¡\n");
+        printf("2. Á¦Ç° Á¤º¸ Ãâ·Â\n");
+        printf("3. Á¦Ç° Á¤º¸ ¾÷µ¥ÀÌÆ®\n");
+        printf("4. Á¦Ç° Á¤º¸ »èÁ¦\n");
+        printf("5. Á¦Ç° ÀÌ¸§ °Ë»ö\n");
+        printf("6. Á¦Ç° °¡°İ °Ë»ö\n");
+        printf("7. ³²Àº ¼ö·® Ãâ·Â\n");
+        printf("8. ÃÖÁ¾ ±İ¾× Ãâ·Â\n");
+        printf("9. Á¦Ç° Á¤º¸ ÆÄÀÏ ÀúÀå\n");
+        printf("10. Àå¹Ù±¸´Ï ´ã±â\n");
+        printf("11. ÃÑ ÆÇ¸Å °³¼ö\n");
+        printf("0. Á¾·á\n");
         printf("========================\n\n");
         scanf("%d",&menu);
         printf("\n");
        return menu;
 }
-//ì œí’ˆì„ ì¶”ê°€í•œë‹¤ 
+//Á¦Ç°À» Ãß°¡ÇÑ´Ù 
 int createproduct(product *p){
 
-  printf("\nì œí’ˆëª…: ");
+  printf("\nÁ¦Ç°¸í: ");
   getchar();
   gets(p->name);
-  printf("ì œí’ˆ ì •ë³´: ");
+  printf("Á¦Ç° Á¤º¸: ");
   gets(p->info);
-  printf("ì œí’ˆ ê°€ê²©: ");
+  printf("Á¦Ç° °¡°İ: ");
   scanf("%d",&p->price);
-  printf("ì œí’ˆ ìˆ˜ëŸ‰: ");
+  printf("Á¦Ç° ¼ö·®: ");
   scanf("%d",&p->remain);
   p->totalSales = 0;
-  printf("\nì¶”ê°€ ì™„ë£Œ!\n\n");
+  printf("\nÃß°¡ ¿Ï·á!\n\n");
   return 0;
 }
 
-//í•œê°€ì§€ì˜ í”„ë¡œë•íŠ¸ ì •ë³´ë¥¼ ì¶œë ¥í•œë‹¤ (ìì„¸íˆ).
-/* ì˜ˆì‹œ:
+//ÇÑ°¡ÁöÀÇ ÇÁ·Î´öÆ® Á¤º¸¸¦ Ãâ·ÂÇÑ´Ù (ÀÚ¼¼È÷).
+/* ¿¹½Ã:
 
-ì œí’ˆëª…: ë¯¸ë‹ˆ í¬ë¡œì™€ìƒ
-200ì›
-10ê°œ ë‚¨ìŒ
+Á¦Ç°¸í: ¹Ì´Ï Å©·Î¿Í»ó
+200¿ø
+10°³ ³²À½
 
-ì œí’ˆ ì •ë³´: í¬ë¡œì™€ìƒë³´ë‹¤ ì‘ì€ í¬ë¡œì™€ìƒ
+Á¦Ç° Á¤º¸: Å©·Î¿Í»óº¸´Ù ÀÛÀº Å©·Î¿Í»ó
 
 */
 int readproduct(product p){
 
     if (p.name[0] == '\0' || p.price < 0 || p.remain < 1) {
-  printf("ì‚­ì œëœ ì²´í’ˆì…ë‹ˆë‹¤!");
+  printf("»èÁ¦µÈ Ã¼Ç°ÀÔ´Ï´Ù!");
   return 0;
   } //check for empty
   printf("\n***********************************\n");
-  printf("ì œí’ˆëª…: %s\n%dì›\n",p.name,p.price);
-  printf("%dê°œ ë‚¨ìŒ \n",p.remain);
-  printf("\nì œí’ˆ ì •ë³´: %s",p.info);
+  printf("Á¦Ç°¸í: %s\n%d¿ø\n",p.name,p.price);
+  printf("%d°³ ³²À½ \n",p.remain);
+  printf("\nÁ¦Ç° Á¤º¸: %s",p.info);
   printf("\n***********************************\n\n");
   return 0;
 }
 
-//ëª¨ë“  í”„ë¡œë•íŠ¸ì˜ ì •ë³´ë¥¼ ì¶œë ¥í•œë‹¤(ê°„ëµí•˜ê²Œ).
+//¸ğµç ÇÁ·Î´öÆ®ÀÇ Á¤º¸¸¦ Ãâ·ÂÇÑ´Ù(°£·«ÇÏ°Ô).
 void listproduct(product p[],int count){
     printf("\n***********************************\n\n");
     for (int i = 0; i < count; i++)
     {
         if (p[i].name[0] == '\0' || p[i].price < 0 || p[i].remain<1) continue;//check for empty
        
-        printf("%d. ì œí’ˆëª…: %s\n ê°€ê²©:%d\t ì¬ê³ :%d\n",i+1,p[i].name,p[i].price,p[i].remain);
+        printf("%d. Á¦Ç°¸í: %s\n °¡°İ:%d\t Àç°í:%d\n",i+1,p[i].name,p[i].price,p[i].remain);
     }
     printf("\n***********************************\n\n");
     
@@ -137,24 +137,24 @@ void addcart(product *p, int count){
     listproduct(p,count);
     int num;
     do{
-        printf("ì¶”ê°€í•  ì œí’ˆì˜ ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì‹œì˜¤: ");
+        printf("Ãß°¡ÇÒ Á¦Ç°ÀÇ ¹øÈ£¸¦ ÀÔ·ÂÇÏ½Ã¿À: ");
         scanf("%d",&num);
     }while(num>count||num<0);
     num--;
     if(p[num].remain==0) {
-        printf("ì¬ê³ ê°€ ì—†ìŠµë‹ˆë‹¤!\n");
+        printf("Àç°í°¡ ¾ø½À´Ï´Ù!\n");
         return;
     }
     int buy;
     do{
-        printf("ëª‡ê°œë¥¼ ë‹´ìœ¼ì‹œê² ìŠµë‹ˆê¹Œ? (%dê° ë‚¨ìŒ): ",p[num].remain);
+        printf("¸î°³¸¦ ´ãÀ¸½Ã°Ú½À´Ï±î? (%d°´ ³²À½): ",p[num].remain);
         scanf("%d",&buy);
         if(buy<0) buy = 0;
     } while((buy>p[num].remain));
     if(p[num].totalSales ==0)p[num].totalSales = buy;
     else p[num].totalSales += buy;
     p[num].remain -= buy;
-    printf("\nì¶”ê°€ ì™„ë£Œ!\n");
+    printf("\nÃß°¡ ¿Ï·á!\n");
 }
 
 void saveData(product *p,char* data,int count){
@@ -166,7 +166,7 @@ void saveData(product *p,char* data,int count){
         fprintf(fp,"%s;%s;%d;%d;%d\n",p[i].name,p[i].info,p[i].price,p[i].remain,p[i].totalSales);
     }
     fclose(fp);
-    printf("ì €ì¥ë¨");
+    printf("ÀúÀåµÊ");
 }
 
 int loadData(product *p){
@@ -196,7 +196,7 @@ int loadData(product *p){
 int selectDataNo(product *p,int count){
     int no;
     listproduct(p,count);
-    printf("ë²ˆí˜¸ëŠ”? ìµœì†Œ (0) ? ");
+    printf("¹øÈ£´Â? ÃÖ¼Ò (0) ? ");
     scanf("%d",&no);
     return no;
 }
@@ -205,7 +205,7 @@ void searchProductName(product *p,int count){
     char search[100];
     int scount=0;
     getchar();
-    printf("ì œí’ˆ ì´ë¦„:");
+    printf("Á¦Ç° ÀÌ¸§:");
     scanf("%[^\n]s",search);
     printf("\n***************\n");
     for(int i=0;i<count;i++){
@@ -217,16 +217,16 @@ void searchProductName(product *p,int count){
         }
     }
     if(scount==0)
-    printf("ë°ì´í„° ì—†ìŒ!\n");
+    printf("µ¥ÀÌÅÍ ¾øÀ½!\n");
 }
 
 
 void searchProductPrice(product *p,int count){
-//ì œí’ˆ ê°€ê²© ê²€ìƒ‰ì„ ì´ìš©í•´ ë¬¼í’ˆ ì •ë³´ ì¶œë ¥
+//Á¦Ç° °¡°İ °Ë»öÀ» ÀÌ¿ëÇØ ¹°Ç° Á¤º¸ Ãâ·Â
     int search;
     int cnt;
     getchar();
-    printf("ì œí’ˆ ê°€ê²©: ");
+    printf("Á¦Ç° °¡°İ: ");
     scanf("%d",&search);
     for(int i=0;i<count;i++){
         if(p[i].remain==0||p[i].price==-1||p[i].name[0]=='\0') continue;
@@ -236,11 +236,11 @@ void searchProductPrice(product *p,int count){
             cnt++;
         }
     }
-    if(cnt==0) printf("\n***********************************\në°ì´í„° ì—†ìŒ!\n");
+    if(cnt==0) printf("\n***********************************\nµ¥ÀÌÅÍ ¾øÀ½!\n");
 }
 
 void printTotalSell(product *p,int count){
-    //ì§€ê¸ˆê¹Œì§€ íŒ”ë¦° ê°œìˆ˜ë¥¼ ì•Œë ¤ì¤€ë‹¤. 
+    //Áö±İ±îÁö ÆÈ¸° °³¼ö¸¦ ¾Ë·ÁÁØ´Ù. 
     int sold = 0;
     for (int i = 0; i < count; i++)
     {
@@ -248,7 +248,7 @@ void printTotalSell(product *p,int count){
         sold += p[i].totalSales;
     }
     
-    printf("ì´ %dê°œì˜ ì¬í’ˆì´ íŒ”ë ¸ìŠµë‹ˆë‹¤.",sold);
+    printf("ÃÑ %d°³ÀÇ ÀçÇ°ÀÌ ÆÈ·È½À´Ï´Ù.",sold);
     
 }
 void printFinalPrice(product *p,int count){0
@@ -257,7 +257,7 @@ void printFinalPrice(product *p,int count){0
         if(p[i].price==-1||p[i].name[0]=='\0') continue; //deleted product
         total += p[i].price * p[i].totalSales;
     }
-    printf("ì´ ê¸ˆì•¡: %dì›\n", total);
+    printf("ÃÑ ±İ¾×: %d¿ø\n", total);
 
 }
 
@@ -265,87 +265,87 @@ void printFinalPrice(product *p,int count){0
 int main(){
     product p[10];
     char outputFileName[100];
-    int temp; //selectmenuë¥¼ ë°›ìŒ
+    int temp; //selectmenu¸¦ ¹ŞÀ½
     int result;
     int count=0;
     int choice;
     count=loadData(p);
     if(count==-1){
-        printf("íŒŒì¼ ì—†ìŒ!\n");
+        printf("ÆÄÀÏ ¾øÀ½!\n");
         count=0;
     }
     while(1){
         temp=selectMenu();
         printf("%d",count);
         if(temp==0) break;
-        if(temp==1){//ì¶”ê°€
+        if(temp==1){//Ãß°¡
             result=createproduct(&p[count]);
                 if(result==0){
-                    printf("ì €ì¥ë¨");
+                    printf("ÀúÀåµÊ");
                     count++;
                 }
             }
-        else if(temp==2){//ì¶œë ¥
+        else if(temp==2){//Ãâ·Â
             if(count==0){
-                printf("ë°ì´í„° ì—†ìŒ");
+                printf("µ¥ÀÌÅÍ ¾øÀ½");
                 continue;;
             }
             listproduct(p,count);
             if(result==0){
-                printf("ë°ì´í„° ì¶œë ¥\n");
+                printf("µ¥ÀÌÅÍ Ãâ·Â\n");
             }
         }
-        else if(temp==3){//ì—…ë°ì´íŠ¸
+        else if(temp==3){//¾÷µ¥ÀÌÆ®
             if(count==0){
-                printf("ë°ì´í„° ì—†ìŒ");
+                printf("µ¥ÀÌÅÍ ¾øÀ½");
                 continue;;
             }
             choice=selectDataNo(p,count);
             result=updateproduct(&p[choice-1]);
-            if(result==1) printf("ì €ì¥ë¨!");
+            if(result==1) printf("ÀúÀåµÊ!");
         }
-        else if(temp==4){//ì‚­ì œ
+        else if(temp==4){//»èÁ¦
             if(count==0){
-                printf("ë°ì´í„° ì—†ìŒ");
+                printf("µ¥ÀÌÅÍ ¾øÀ½");
                 continue;;
             }
             choice=selectDataNo(p,count);
             result=deleteProduct(&p[choice-1]);
-            if(result==1) printf("ì‚­ì œë¨!");
+            if(result==1) printf("»èÁ¦µÊ!");
         }
         else if(temp==5){
             searchProductName(p,count);
-            //ì´ë¦„ ê²€ìƒ‰
+            //ÀÌ¸§ °Ë»ö
         }
-        else if(temp==6){//ê°€ê²© ê²€ìƒ‰
+        else if(temp==6){//°¡°İ °Ë»ö
             searchProductPrice(p,count);
         }
-        else if(temp==7){//ë‚¨ì€ ìˆ˜ëŸ‰
+        else if(temp==7){//³²Àº ¼ö·®
             if(count==0){
-                printf("ë°ì´í„° ì—†ìŒ");
+                printf("µ¥ÀÌÅÍ ¾øÀ½");
                 continue;
             }
             result=printRemain(p,count);
         }
-        else if(temp==8){//ë§¤ì¶œ
+        else if(temp==8){//¸ÅÃâ
             if(count==0){
-                printf("ë°ì´í„° ì—†ìŒ");
+                printf("µ¥ÀÌÅÍ ¾øÀ½");
                 continue;
             }
             printFinalPrice(p,count);
         }
         else if(temp==9){
             if(count==0){
-                printf("ë°ì´í„° ì—†ìŒ");
+                printf("µ¥ÀÌÅÍ ¾øÀ½");
                 continue;
             }
-            printf("ì €ì¥í•  íŒŒì¼ ì´ë¦„ì€?: ");
+            printf("ÀúÀåÇÒ ÆÄÀÏ ÀÌ¸§Àº?: ");
             scanf("%s",outputFileName);
             saveData(p,outputFileName,count);
         }
-        else if (temp == 10){ //ì¥ë°”êµ¬ë‹ˆ ë‹´ê¸°
+        else if (temp == 10){ //Àå¹Ù±¸´Ï ´ã±â
             if(count == 0){
-                printf("ë°ì´í„° ì—†ìŒ");
+                printf("µ¥ÀÌÅÍ ¾øÀ½");
                 continue;
             }
             addcart(p,count);
@@ -353,7 +353,7 @@ int main(){
         }
         else if (temp == 11){
             if(count == 0){
-                printf("ë°ì´í„° ì—†ìŒ");
+                printf("µ¥ÀÌÅÍ ¾øÀ½");
                 continue;
             }
             printTotalSell(p,count);
