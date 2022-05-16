@@ -69,8 +69,10 @@ int selectMenu(){//메뉴 선택 기능
         printf("5. 제품 이름 검색\n");
         printf("6. 제품 가격 검색\n");
         printf("7. 남은 수량 출력\n");
-        printf("8. 최종 가격 출력\n");
+        printf("8. 최종 금액 출력\n");
         printf("9. 제품 정보 파일 저장\n");
+        printf("10. 장바구니 담기\n");
+        printf("11. 총 판매 개수\n");
         printf("0. 종료\n");
         printf("========================\n\n");
         scanf("%d",&menu);
@@ -125,25 +127,34 @@ void listproduct(product p[],int count){
     {
         if (p[i].name[0] == '\0' || p[i].price < 0 || p[i].remain<1) continue;//check for empty
        
-        printf("제품명: %s\n 가격:%d\t 재고:%d\n",p[i].name,p[i].price,p[i].remain);
+        printf("%d. 제품명: %s\n 가격:%d\t 재고:%d\n",i+1,p[i].name,p[i].price,p[i].remain);
     }
     printf("\n***********************************\n\n");
     
 }
 
-void addcart(product*p, int *cart[], int count){
-  listproduct(p,count);
-  int num;
-  do{
-  printf("추가할 제품의 번호를 입력하시오: ");
-  scanf("%d",&num);
-  }while(num>count||num<0);
-  cart[0] = num;
-  do{
-  printf("몇개를 담으시겠습니까?: ");
-  scanf("%d",&num);
-  } while((num<p[num].remain));
-
+void addcart(product *p, int count){
+    listproduct(p,count);
+    int num;
+    do{
+        printf("추가할 제품의 번호를 입력하시오: ");
+        scanf("%d",&num);
+    }while(num>count||num<0);
+    num--;
+    if(p[num].remain==0) {
+        printf("재고가 없습니다!\n");
+        return;
+    }
+    int buy;
+    do{
+        printf("몇개를 담으시겠습니까? (%d객 남음): ",p[num].remain);
+        scanf("%d",&buy);
+        if(buy<0) buy = 0;
+    } while((buy>p[num].remain));
+    if(p[num].totalSales ==0)p[num].totalSales = buy;
+    else p[num].totalSales += buy;
+    p[num].remain -= buy;
+    printf("\n추가 완료!\n");
 }
 
 void saveData(product *p,char* data,int count){
@@ -212,6 +223,46 @@ void searchProductName(product *p,int count){
 }
 
 
+void searchProductPrice(product *p,int count){
+//제품 가격 검색을 이용해 물품 정보 출력
+    int search;
+    int cnt;
+    getchar();
+    printf("제품 가격: ");
+    scanf("%d",&search);
+    for(int i=0;i<count;i++){
+        if(p[i].remain==0||p[i].price==-1||p[i].name[0]=='\0') continue;
+        if (search == p[i].price){
+            printf("\n");
+            readproduct(p[i]);
+            cnt++;
+        }
+    }
+    if(cnt==0) printf("\n***********************************\n데이터 없음!\n");
+}
+
+void printTotalSell(product *p,int count){
+    //지금까지 팔린 개수를 알려준다. 
+    int sold = 0;
+    for (int i = 0; i < count; i++)
+    {
+        if(p[i].price==-1||p[i].name[0]=='\0') continue;
+        sold += p[i].totalSales;
+    }
+    
+    printf("총 %d개의 재품이 팔렸습니다.",sold);
+    
+}
+void printFinalPrice(product *p,int count){0
+    int total = 0;
+    for (int i=0 ;i<count;i++){
+        if(p[i].price==-1||p[i].name[0]=='\0') continue; //deleted product
+        total += p[i].price * p[i].totalSales;
+    }
+    printf("총 금액: %d원\n", total);
+
+}
+
 
 int main(){
     product p[10];
@@ -227,6 +278,7 @@ int main(){
     }
     while(1){
         temp=selectMenu();
+        printf("%d",count);
         if(temp==0) break;
         if(temp==1){//추가
             result=createproduct(&p[count]);
@@ -268,7 +320,7 @@ int main(){
             //이름 검색
         }
         else if(temp==6){//가격 검색
-
+            searchProductPrice(p,count);
         }
         else if(temp==7){//남은 수량
             if(count==0){
@@ -276,6 +328,13 @@ int main(){
                 continue;
             }
             result=printRemain(p,count);
+        }
+        else if(temp==8){//매출
+            if(count==0){
+                printf("데이터 없음");
+                continue;
+            }
+            printFinalPrice(p,count);
         }
         else if(temp==9){
             if(count==0){
@@ -285,6 +344,22 @@ int main(){
             printf("저장할 파일 이름은?: ");
             scanf("%s",outputFileName);
             saveData(p,outputFileName,count);
+        }
+        else if (temp == 10){ //장바구니 담기
+            if(count == 0){
+                printf("데이터 없음");
+                continue;
+            }
+            addcart(p,count);
+            continue;
+        }
+        else if (temp == 11){
+            if(count == 0){
+                printf("데이터 없음");
+                continue;
+            }
+            printTotalSell(p,count);
+            continue;
         }
     }
     return 0;

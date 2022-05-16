@@ -124,7 +124,7 @@ void listproduct(product p[],int count){
     {
         if (p[i].name[0] == '\0' || p[i].price < 0 || p[i].remain<1) continue;//check for empty
        
-        printf("제품명: %s\n 가격:%d\t 재고:%d\n",p[i].name,p[i].price,p[i].remain);
+        printf("제품명: %s\n가격:%d\t 재고:%d\n",p[i].name,p[i].price,p[i].remain);
     }
     printf("\n***********************************\n\n");
     
@@ -137,7 +137,7 @@ void addcart(product*p, int *cart[], int count){
   printf("추가할 제품의 번호를 입력하시오: ");
   scanf("%d",&num);
   }while(num>count||num<0);
-  cart[0] = num;
+  cart[0] = &num;
   do{
   printf("몇개를 담으시겠습니까?: ");
   scanf("%d",&num);
@@ -148,6 +148,7 @@ void addcart(product*p, int *cart[], int count){
 
 int main(){
     product p[10];
+    product cart[10];
     int temp; //selectmenu를 받음
     int result;
     int count=0;

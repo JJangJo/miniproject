@@ -9,18 +9,18 @@ typedef struct
 }product;
 
 
-int createproduct(product *p);//Á¦Ç°À» Ãß°¡ÇÑ´Ù.
-int addpcart(product*p, int cart[], int count); //Àå¹Ù±¸´Ï¿¡ Á¦Ç°À» Ãß°¡ÇÑ´Ù
-int readproduct(product p);//ÇÑ°¡ÁöÀÇ ÇÁ·Î´öÆ® Á¤º¸¸¦ Ãâ·ÂÇÑ´Ù.
-void listproduct(product p[],int count);//¸ğµç ÇÁ·Î´öÆ®ÀÇ Á¤º¸¸¦ Ãâ·ÂÇÑ´Ù.
-int updateproduct(product *p);//Á¦Ç° Á¤º¸¸¦ ¾÷µ¥ÀÌÆ®ÇÑ´Ù.
-int deleteproduct(product *p);//Á¦Ç°ÀÇ Á¤º¸¸¦ »èÁ¦ÇÑ´Ù.
-void searchProductName(product *p, int count);//Á¦Ç° ÀÌ¸§ °Ë»öÀ» ÀÌ¿ëÇØ ¹°Ç° Á¤º¸¸¦ Ãâ·ÂÇÑ´Ù.
-void searchProductPrice(product p);//Á¦Ç° °¡°İ °Ë»öÀ» ÀÌ¿ëÇØ ¹°Ç° Á¤º¸ Ãâ·Â
-int loadData(product *p);//ÆÄÀÏ ÇüÅÂÀÇ Á¦Ç° Á¤º¸¸¦ ÀÔ·ÂÇÑ´Ù.
-void saveData(product *p,char* data, int count);//ÆÄÀÏ ÇüÅÂ·Î Á¦Ç° Á¤º¸¸¦ Ãß°¡ÇÑ´Ù.
-int selectMenu();//Ãß°¡, Ãâ·Â, ¾÷µ¥ÀÌÆ® µî ¾î¶°ÇÑ ±â´ÉÀ» »ç¿ëÇÒÁö Ãâ·ÂÇÑ´Ù.
-int selectDataNo(product *p, int count);//Æ¯Á¤ ¹øÈ£ÀÇ Á¦Ç° Á¤º¸¸¦ Ãâ·ÂÇÑ´Ù.
-int printRemain(product *p,int count);//³²Àº °³¼ö¸¦ ¾Ë·ÁÁØ´Ù. 
-int printTotalSell(product *p);//Áö±İ±îÁö ÆÈ¸° °³¼ö¸¦ ¾Ë·ÁÁØ´Ù. 
-void printFinalPrice(product*p,int cart[]);
+int createproduct(product *p);//ì œí’ˆì„ ì¶”ê°€í•œë‹¤.
+void addcart(product *p,int count); //ì¥ë°”êµ¬ë‹ˆì— ì œí’ˆì„ ì¶”ê°€í•œë‹¤
+int readproduct(product p);//í•œê°€ì§€ì˜ í”„ë¡œë•íŠ¸ ì •ë³´ë¥¼ ì¶œë ¥í•œë‹¤.
+void listproduct(product p[],int count);//ëª¨ë“  í”„ë¡œë•íŠ¸ì˜ ì •ë³´ë¥¼ ì¶œë ¥í•œë‹¤.
+int updateproduct(product *p);//ì œí’ˆ ì •ë³´ë¥¼ ì—…ë°ì´íŠ¸í•œë‹¤.
+int deleteproduct(product *p);//ì œí’ˆì˜ ì •ë³´ë¥¼ ì‚­ì œí•œë‹¤.
+void searchProductName(product *p, int count);//ì œí’ˆ ì´ë¦„ ê²€ìƒ‰ì„ ì´ìš©í•´ ë¬¼í’ˆ ì •ë³´ë¥¼ ì¶œë ¥í•œë‹¤.
+void searchProductPrice(product *p, int count);//ì œí’ˆ ê°€ê²© ê²€ìƒ‰ì„ ì´ìš©í•´ ë¬¼í’ˆ ì •ë³´ ì¶œë ¥
+int loadData(product *p);//íŒŒì¼ í˜•íƒœì˜ ì œí’ˆ ì •ë³´ë¥¼ ì…ë ¥í•œë‹¤.
+void saveData(product *p,char* data, int count);//íŒŒì¼ í˜•íƒœë¡œ ì œí’ˆ ì •ë³´ë¥¼ ì¶”ê°€í•œë‹¤.
+int selectMenu();//ì¶”ê°€, ì¶œë ¥, ì—…ë°ì´íŠ¸ ë“± ì–´ë– í•œ ê¸°ëŠ¥ì„ ì‚¬ìš©í• ì§€ ì¶œë ¥í•œë‹¤.
+int selectDataNo(product *p, int count);//íŠ¹ì • ë²ˆí˜¸ì˜ ì œí’ˆ ì •ë³´ë¥¼ ì¶œë ¥í•œë‹¤.
+int printRemain(product *p,int count);//ë‚¨ì€ ê°œìˆ˜ë¥¼ ì•Œë ¤ì¤€ë‹¤. 
+void printTotalSell(product *p,int count);//ì§€ê¸ˆê¹Œì§€ íŒ”ë¦° ê°œìˆ˜ë¥¼ ì•Œë ¤ì¤€ë‹¤. 
+void printFinalPrice(product*p,int count); //ì´‰ ê¸ˆì•¡ ì¶œë ¥
